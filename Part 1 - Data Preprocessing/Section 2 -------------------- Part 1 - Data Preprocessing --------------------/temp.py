@@ -33,4 +33,20 @@ imputer = Imputer(missing_values = "NaN", strategy = "mean", axis=0)
 imputer = imputer.fit(x[:,1:3])
 x[:,1:3] = imputer.transform(x[:,1:3])
 
-print(x)
+#print(x)
+
+#ENCODING CATEGORICAL DATA
+from sklearn.preprocessing import LabelEncoder, OneHotEncoder
+
+labelencoder_x = LabelEncoder()
+
+#THE LINE BELOW IS BASICALLY GIVING ALL THE ELEMENTS IN COLUMN 0 AN ID, I.E. FRANCE = 0, SPAIN = 1, GERMANY = 2
+#ISSUE THAT WILL ARISE, FRANCE WILL BE THE GREATEST PRIORITY FOR PROGRAMS, AND SPAIN MORE THAN GERMANY, ETC.
+x[:,0] = labelencoder_x.fit_transform(x[:,0])
+
+#BASICALLY SAYING COLUMN 0 IS CATEGORIES, DO NOT TREAT AS PRIORITIES
+onehotencoder = OneHotEncoder(categorical_features = [0])
+x = onehotencoder.fit_transform(x).toarray()
+
+labelencoder_y = LabelEncoder()
+y = labelencoder_y.fit_transform(y)
