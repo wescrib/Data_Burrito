@@ -23,4 +23,9 @@ from sklearn.linear_model import LinearRegression
 regressor = LinearRegression()
 regressor.fit(x_train, y_train,)
 
-"""regressor is the machine in this case that is learning. this is a super basic machin learning model."""
+"""regressor IS the machine that is learning. this is a super basic machin learning model."""
+"""training data is basically the data that the machine will learn from. the test data is where the learning will be applied. BAM!"""
+
+#WILL PREDICT TEST SET RESULTS
+y_predict = regressor.predict(x_test)
+"""after this line, compare y_test data and the new y_predict data | y_test is legit real data"""
