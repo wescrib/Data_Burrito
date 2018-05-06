@@ -3,9 +3,10 @@
 Created on Wed May  2 21:40:09 2018
 
 @author: scrib
-"""
 
-#Data Processing
+profit is dependant var
+all other columns are independant
+"""
 
 #Libraries
 
@@ -20,9 +21,22 @@ import matplotlib.pyplot as plt
 
 #IMPORTING DATASETS
 #tells python to use Data.csv
-dataset = pd.read_csv("Data.csv")
+dataset = pd.read_csv("50_Startups.csv")
 x = dataset.iloc[:,:-1].values
-y = dataset.iloc[:,3].values
+y = dataset.iloc[:,4].values
+
+
+# Encoding categorical data
+# Encoding the Independent Variable
+from sklearn.preprocessing import LabelEncoder, OneHotEncoder
+labelencoder_x = LabelEncoder()
+
+""" using the third index for dummy vars"""
+x[:, 3] = labelencoder_x.fit_transform(x[:, 3])
+onehotencoder = OneHotEncoder(categorical_features = [3])
+x = onehotencoder.fit_transform(x).toarray()
+
+
 
 from sklearn.cross_validation import train_test_split
 x_train, x_test, y_train, y_test = train_test_split(x,y,test_size=0.2, random_state = 0)
