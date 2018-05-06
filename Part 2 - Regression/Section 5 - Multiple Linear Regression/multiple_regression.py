@@ -36,6 +36,10 @@ x[:, 3] = labelencoder_x.fit_transform(x[:, 3])
 onehotencoder = OneHotEncoder(categorical_features = [3])
 x = onehotencoder.fit_transform(x).toarray()
 
+#manually avoid dummy var trap
+""" removes first column """
+x = x[:,1:]
+
 
 
 from sklearn.cross_validation import train_test_split
@@ -49,4 +53,9 @@ sc_x = StandardScaler()
 x_train = sc_x.fit_transform(x_train)
 x_test = sc_x.transform(x_test)
 """
+
+#fitting multiple linear regression to the rtainint set
+from sklearn.linear_model import LinearRegression
+regressor = LinearRegression()
+regressor.fit(x_train, y_train)
 
