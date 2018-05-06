@@ -47,3 +47,7 @@ plt.title("SALARY vs EXPERIENCE (Training Data)")
 plt.xlabel("Years of Experience")
 plt.ylabel("Salary")
 plt.show()
+
+""" slope in both graphs are actually the same slope derived from the training data.
+in other words, the slope in the test data graph is the slope taken from the training data
+why? because the training data is what the model learned from, and it is now testing whether what it learned was accurate against the test data """
