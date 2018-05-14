@@ -59,3 +59,34 @@ from sklearn.linear_model import LinearRegression
 regressor = LinearRegression()
 regressor.fit(x_train, y_train)
 
+y_pred = regressor.predict(x_test)
+
+
+#CODE BELOW IS STEP 2 OF BACKWARD ELMINATION
+import statsmodels.formula.api as sm
+x = np.append(arr = np.ones((50,1)). astype(int), values = x, axis = 1)
+x_opt = x[:,[0,1,2,3,4,5]]
+regressor_OLS = sm.OLS(endog = y, exog = x_opt).fit()
+
+#STEP 3 AND 4 AND 5 IS BELOW
+
+"""this is basically going to give you a table with every column and a bunch of different values.
+P>|t| is where you wanna check how far above P value is above significance level.
+remove the highest one, if any above your SL
+in this case were removing index 2 of x data """
+regressor_OLS.summary()
+
+"""REMOVING INDEX 2"""
+x_opt = x[:,[0,1,3,4,5]]
+regressor_OLS = sm.OLS(endog = y, exog = x_opt).fit()
+regressor_OLS.summary()
+
+"""REMOVING MORE INDEXES"""
+x_opt = x[:,[0,3]]
+regressor_OLS = sm.OLS(endog = y, exog = x_opt).fit()
+regressor_OLS.summary()
+
+
+
+
+
