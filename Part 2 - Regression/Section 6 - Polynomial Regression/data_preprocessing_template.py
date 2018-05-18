@@ -7,7 +7,7 @@ import pandas as pd
 
 # Importing the dataset
 dataset = pd.read_csv('Position_Salaries.csv')
-X = dataset.iloc[:, 1:2].values
+x = dataset.iloc[:, 1:2].values
 y = dataset.iloc[:, 2].values
 
 # Splitting the dataset into the Training set and Test set
@@ -23,3 +23,16 @@ X_test = sc_X.transform(X_test)
 sc_y = StandardScaler()
 y_train = sc_y.fit_transform(y_train)"""
 
+#build linear regression dataset to compare to the poly regression
+from sklearn.linear_model import LinearRegression
+lin_reg = LinearRegression()
+lin_reg.fit(x,y)
+
+#build poly regression dataset
+from sklearn.preprocessing import PolynomialFeatures
+poly_reg = PolynomialFeatures(degree=2)
+x_poly = poly_reg.fit_transform(x)
+
+""" fitting poly fit into a linear regression model """
+lin_reg2 = LinearRegression()
+lin_reg2.fit(x_poly, y)
