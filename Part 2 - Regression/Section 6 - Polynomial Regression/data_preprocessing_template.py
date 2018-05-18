@@ -51,10 +51,12 @@ plt.show()
 
 #visual of poly regression
 """does the plotting, literally x and y coords"""
+x_grid = np.arange(min(x),max(x),0.1)
+x_grid = x_grid.reshape((len(x_grid),1))
 plt.scatter(x, y, color = 'red')
 """ the prediction, the slope
 use lin_reg2 because thats using your x_poly data, then predict the x_poly data, not just x """
-plt.plot(x, lin_reg2.predict(x_poly), color='blue')
+plt.plot(x_grid, lin_reg2.predict(poly_reg.fit_transform(x_grid)), color='blue')
 plt.title("Truth or Bluff (Poly Regression)")
 plt.xlabel("Position Level")
 plt.ylabel("Salary")
