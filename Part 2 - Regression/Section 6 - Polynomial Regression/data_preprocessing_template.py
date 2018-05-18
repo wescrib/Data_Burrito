@@ -30,9 +30,32 @@ lin_reg.fit(x,y)
 
 #build poly regression dataset
 from sklearn.preprocessing import PolynomialFeatures
-poly_reg = PolynomialFeatures(degree=2)
+poly_reg = PolynomialFeatures(degree=4)
 x_poly = poly_reg.fit_transform(x)
 
 """ fitting poly fit into a linear regression model """
 lin_reg2 = LinearRegression()
 lin_reg2.fit(x_poly, y)
+
+#visual of linear regression
+
+"""does the plotting, literally x and y coords"""
+plt.scatter(x, y, color = 'red')
+""" the prediction, the slope """
+plt.plot(x, lin_reg.predict(x), color='blue')
+plt.title("Truth or Bluff (Linear Regression)")
+plt.xlabel("Position Level")
+plt.ylabel("Salary")
+plt.show()
+
+
+#visual of poly regression
+"""does the plotting, literally x and y coords"""
+plt.scatter(x, y, color = 'red')
+""" the prediction, the slope
+use lin_reg2 because thats using your x_poly data, then predict the x_poly data, not just x """
+plt.plot(x, lin_reg2.predict(x_poly), color='blue')
+plt.title("Truth or Bluff (Poly Regression)")
+plt.xlabel("Position Level")
+plt.ylabel("Salary")
+plt.show()
