@@ -1,3 +1,9 @@
+"""
+this dude is applying for a new job, and told HR that his salary at his current salary is 160k. HR found this oddly high.
+we need to use some kind of regression algorithm to figure out if he is being honest or not
+"""
+
+
 # Data Preprocessing Template
 
 # Importing the libraries
@@ -61,3 +67,22 @@ plt.title("Truth or Bluff (Poly Regression)")
 plt.xlabel("Position Level")
 plt.ylabel("Salary")
 plt.show()
+
+
+#predicting future results with linear reg
+""" looking for where the salary will when x = 6.5, still a garbage prediction cause this is a regular linear model ..and the data is not linear"""
+lin_reg.predict(6.5)
+
+""" this outputs 330k, not accurate at all"""
+
+
+
+#predicting future results with poly reg
+lin_reg2.predict(poly_reg.fit_transform(6.5))
+
+""" this outputs about 158 - 159k """
+
+
+
+
+
