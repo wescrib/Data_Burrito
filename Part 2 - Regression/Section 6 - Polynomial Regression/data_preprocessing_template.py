@@ -69,7 +69,7 @@ plt.ylabel("Salary")
 plt.show()
 
 
-#predicting future results with linear reg
+#predicting results with linear reg
 """ looking for where the salary will when x = 6.5, still a garbage prediction cause this is a regular linear model ..and the data is not linear"""
 lin_reg.predict(6.5)
 
@@ -77,7 +77,7 @@ lin_reg.predict(6.5)
 
 
 
-#predicting future results with poly reg
+#predicting results with poly reg
 lin_reg2.predict(poly_reg.fit_transform(6.5))
 
 """ this outputs about 158 - 159k """
